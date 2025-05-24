@@ -1,0 +1,41 @@
+<?php
+session_start();
+include 'koneksi.php'; // Pastikan koneksi ke database sudah benar
+
+if(isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Validasi input kosong
+    if(empty($username) && empty($password)){
+        header('location: login.php?errorusername=Username harus diisi&errorpassword=Password harus diisi');
+    } else if(empty($username)){
+        header('location: login.php?errorusername=Username harus diisi');
+    } else if(empty($password)){
+        header('location: login.php?errorpassword=Password harus diisi');
+    } else {
+
+        // Query untuk mengecek user di database
+        $query = mysqli_query($koneksi, "SELECT * FROM petugas WHERE username = '$username' AND password = '$password'") or die(mysqli_error($koneksi));
+
+        // Cek apakah user ditemukan
+        if(mysqli_num_rows($query) == 1) {
+            $data = mysqli_fetch_assoc($query);
+
+            // Cek apakah user adalah admin atau petugas
+            if($data['level'] == 'admin') {
+                $_SESSION['admin'] = $data;
+                echo "<script>alert('Berhasil login sebagai Admin');</script>";
+                echo "<script>document.location.href='index.php';</script>";
+            } else if($data['level'] == 'petugas') {
+                $_SESSION['petugas'] = $data;
+                echo "<script>alert('Berhasil login sebagai Petugas');</script>";
+                echo "<script>document.location.href='dashboard_petugas.php';</script>";
+            }
+        } else {
+            echo "<script>alert('Gagal login, Username atau Password salah');</script>";
+            echo "<script>document.location.href='login.php';</script>";
+        }
+    }
+}
+?>
