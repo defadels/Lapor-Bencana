@@ -33,6 +33,8 @@
 
     <!-- App CSS -->
     <link rel="stylesheet" href="assets/css/app.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 text-white bg-dark border-bottom shadow-sm">
@@ -73,6 +75,18 @@
     </div>
 
 <!-- jQuery, Papper -->
-<script src="assets/js/jquery.min.js"></script>
+<!-- <script src="assets/js/jquery.min.js"></script> -->
+
+ <!-- jQuery -->
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#select2').select2({
+                allowClear: true
+            });
+        });
+    </script>
 </body>
 </html>

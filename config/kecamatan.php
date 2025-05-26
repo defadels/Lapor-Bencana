@@ -1,0 +1,22 @@
+<?php
+$kecamatan = [
+    'Adiwerna',
+    'Balapulang',
+    'Bojong',
+    'Bumijawa',
+    'Dukuhturi',
+    'Dukuhwaru',
+    'Jatinegara',
+    'Kedungbanteng',
+    'Kramat',
+    'Lebaksiu',
+    'Margasari',
+    'Pagerbarang',
+    'Pangkah',
+    'Slawi',
+    'Suradadi',
+    'Talang',
+    'Tarub',
+    'Warureja'
+];
+?> 
