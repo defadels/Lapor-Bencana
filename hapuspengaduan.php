@@ -5,7 +5,16 @@ $id = $_GET['id_pengaduan'];
 $query_show = mysqli_query($koneksi, "SELECT * FROM pengaduan WHERE id_pengaduan = '$id'") or die(mysqli_error());
 
 $data_lama = $query_show->fetch_assoc();
-unlink("foto/".$data_lama['foto']);
+
+// Hapus file foto jika ada
+if($data_lama['foto']) {
+    unlink("foto/".$data_lama['foto']);
+}
+
+// Hapus file video jika ada
+if($data_lama['video']) {
+    unlink("video/".$data_lama['video']);
+}
 
 $query_hapus = mysqli_query($koneksi,"DELETE FROM pengaduan WHERE id_pengaduan= '$id'") or die(mysqli_error($koneksi));
 
