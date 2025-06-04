@@ -26,7 +26,7 @@ $result = mysqli_query($koneksi, $query);
         <div class="btn-group">
             <a href="?halaman=tambahbarang" class="btn btn-primary">Tambah Barang</a>
             <a href="?halaman=tambahstok" class="btn btn-success ml-2">Tambah Stok</a>
-            <a href="?halaman=historistokmasuk" class="btn btn-info ml-2">Histori Stok Masuk</a>
+            <!-- <a href="?halaman=historistokmasuk" class="btn btn-info ml-2">Histori Stok Masuk</a> -->
         </div>
     </div>
 </div>

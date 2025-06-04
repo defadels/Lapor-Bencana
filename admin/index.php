@@ -209,8 +209,18 @@ if(!isset($_SESSION['admin'])) {
 							include 'barangdistribusi/stok_barang.php';
 						} else if($_GET['halaman'] == 'tambahstok') {
 							include 'barangdistribusi/tambah_stok.php';
+						} else if($_GET['halaman'] == 'historistokmasuk') {
+							include 'barangdistribusi/histori_stok_masuk.php';
+						} else if($_GET['halaman'] == 'editstokmasuk') {
+							include 'barangdistribusi/edit_stok_masuk.php';
+						} else if($_GET['halaman'] == 'hapusstokmasuk') {
+							include 'barangdistribusi/hapus_stok_masuk.php';
 						} else if($_GET['halaman'] == 'tambahbarang') {
 							include 'barangdistribusi/tambah_barang.php';
+						} else if($_GET['halaman'] == 'editdistribusi') {
+							include 'barangdistribusi/edit_distribusi.php';
+						} else if($_GET['halaman'] == 'hapusdistribusi') {
+							include 'barangdistribusi/hapus_distribusi.php';
 						}
 
 					} else {

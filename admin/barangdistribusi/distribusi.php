@@ -59,10 +59,10 @@ $result = mysqli_query($koneksi, $query);
                         <td><?= $row['jumlah'] ?></td>
                         <td><?= $row['satuan'] ?></td>
                         <td><?= $row['alamat_distribusi'] ?></td>
-                        <td>
+                        <!-- <td>
                             <a href="?halaman=editdistribusi&id_distribusi=<?= $row['id_distribusi'] ?>" class="btn btn-sm btn-warning">Edit</a>
                             <a href="?halaman=hapusdistribusi&id_distribusi=<?= $row['id_distribusi'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
-                        </td>
+                        </td> -->
                     </tr>
                     <?php endwhile; ?>
                 </tbody>
