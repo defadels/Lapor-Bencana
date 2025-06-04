@@ -44,6 +44,7 @@ $result = mysqli_query($koneksi, $query);
                         <th scope="col">Jumlah</th>
                         <th scope="col">Satuan</th>
                         <th scope="col">Alamat Distribusi</th>
+                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,6 +59,10 @@ $result = mysqli_query($koneksi, $query);
                         <td><?= $row['jumlah'] ?></td>
                         <td><?= $row['satuan'] ?></td>
                         <td><?= $row['alamat_distribusi'] ?></td>
+                        <td>
+                            <a href="?halaman=editdistribusi&id_distribusi=<?= $row['id_distribusi'] ?>" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="?halaman=hapusdistribusi&id_distribusi=<?= $row['id_distribusi'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
                     </tr>
                     <?php endwhile; ?>
                 </tbody>

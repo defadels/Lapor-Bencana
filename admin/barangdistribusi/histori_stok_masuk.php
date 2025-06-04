@@ -1,14 +1,11 @@
 <?php
+require_once '../../config/koneksi.php';
 
-// Query untuk mengambil data stok barang
-$query = "SELECT b.*, 
-          COALESCE(SUM(sm.jumlah), 0) as total_masuk,
-          COALESCE(SUM(d.jumlah), 0) as total_keluar
-          FROM barang b
-          LEFT JOIN stok_masuk sm ON b.id_barang = sm.id_barang
-          LEFT JOIN distribusi d ON b.id_barang = d.id_barang
-          GROUP BY b.id_barang
-          ORDER BY b.nama_barang ASC";
+// Query untuk mengambil data stok masuk
+$query = "SELECT sm.*, b.nama_barang, b.satuan
+          FROM stok_masuk sm
+          JOIN barang b ON sm.id_barang = b.id_barang
+          ORDER BY sm.tanggal_masuk DESC";
 $result = mysqli_query($koneksi, $query);
 ?>
 
@@ -18,15 +15,13 @@ $result = mysqli_query($koneksi, $query);
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class='bx bx-home-alt'></i></a></li>
-                <li class="breadcrumb-item active" aria-current="page">Stok Barang</li>
+                <li class="breadcrumb-item active" aria-current="page">Histori Stok Masuk</li>
             </ol>
         </nav>
     </div>
     <div class="ml-auto">
         <div class="btn-group">
-            <a href="?halaman=tambahbarang" class="btn btn-primary">Tambah Barang</a>
-            <a href="?halaman=tambahstok" class="btn btn-success ml-2">Tambah Stok</a>
-            <a href="?halaman=historistokmasuk" class="btn btn-info ml-2">Histori Stok Masuk</a>
+            <a href="?halaman=tambahstok" class="btn btn-primary">Tambah Stok Baru</a>
         </div>
     </div>
 </div>
@@ -34,7 +29,7 @@ $result = mysqli_query($koneksi, $query);
 <div class="card radius-15">
     <div class="card-body">
         <div class="card-title">
-            <h4 class="mb-0">Data Stok Barang</h4>
+            <h4 class="mb-0">Data Histori Stok Masuk</h4>
         </div>
         <hr/>
         <!-- Input Pencarian -->
@@ -45,11 +40,11 @@ $result = mysqli_query($koneksi, $query);
                 <thead>
                     <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Tanggal Masuk</th>
                         <th scope="col">Nama Barang</th>
+                        <th scope="col">Jumlah</th>
                         <th scope="col">Satuan</th>
-                        <th scope="col">Total Masuk</th>
-                        <th scope="col">Total Keluar</th>
-                        <th scope="col">Stok Tersedia</th>
+                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,11 +54,14 @@ $result = mysqli_query($koneksi, $query);
                     ?>
                     <tr>
                         <th scope="row"><?= $no++ ?></th>
+                        <td><?= date('d-m-Y', strtotime($row['tanggal_masuk'])) ?></td>
                         <td><?= $row['nama_barang'] ?></td>
+                        <td><?= $row['jumlah'] ?></td>
                         <td><?= $row['satuan'] ?></td>
-                        <td><?= $row['total_masuk'] ?></td>
-                        <td><?= $row['total_keluar'] ?></td>
-                        <td><?= $row['stok_gudang'] ?></td>
+                        <td>
+                            <a href="?halaman=editstokmasuk&id_stok_masuk=<?= $row['id_stok_masuk'] ?>" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="?halaman=hapusstokmasuk&id_stok_masuk=<?= $row['id_stok_masuk'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                        </td>
                     </tr>
                     <?php endwhile; ?>
                 </tbody>
