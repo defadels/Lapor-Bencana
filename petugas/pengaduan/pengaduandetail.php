@@ -59,6 +59,10 @@ $query_tanggapan =mysqli_query($koneksi, "SELECT * FROM tanggapan JOIN petugas O
                 <br>
                 <img src="../foto/<?php echo $pengaduan['foto'];  ?>" style="width: 50%" alt="" class="img-fluid">
             </div>
+            <div class="form-group">
+                <label for="">Video</label>
+                <video src="../video/<?php echo $pengaduan['video']; ?>" style="width: 50%" controls></video>
+            </div>
             <div class="from-group">
                 <label for="">Kecamatan</label>
                 <input type="text" name="" value="<?php echo $pengaduan['kecamatan'];  ?>" id="" class="form-control">
