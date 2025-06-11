@@ -102,11 +102,17 @@ if(!isset($_SESSION['admin'])) {
 					</ul>
 				</li>
 				<li>
-					<a href="?halaman=laporan">
+					<a class="has-arrow" href="javascript:;">
 						<div class="parent-icon icon-color-5"><i class="bx bx-file-blank"></i>
 						</div>
 						<div class="menu-title">Laporan</div>
 					</a>
+					<ul>
+						<li> <a href="?halaman=laporan"><i class="bx bx-right-arrow-alt"></i>Laporan Masyarakat</a>
+						</li>
+						<li> <a href="?halaman=laporandistribusi"><i class="bx bx-right-arrow-alt"></i>Laporan Distribusi</a>
+						</li>
+					</ul>
 				</li>
 				<li>
 					<a class="has-arrow" href="javascript:;">
@@ -198,6 +204,8 @@ if(!isset($_SESSION['admin'])) {
 							include 'pengaduan/pengaduanbatal.php';
 						} else if($_GET['halaman'] == 'laporan') {
 							include 'laporan.php';
+						} else if($_GET['halaman'] == 'laporandistribusi') {
+							include 'laporan_distribusi.php';
 						} else if($_GET['halaman'] == 'masyarakat') {
 							include 'masyarakat.php';
 							
