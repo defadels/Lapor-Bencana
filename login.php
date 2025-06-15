@@ -10,7 +10,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrasi Akun Lapor Kebencanaan</title>
+    <title>Login Akun Lapor Kebencanaan</title>
 
     <!-- favicon -->
     <link rel="icon" href="assets/images/Dinsos.png">
@@ -78,7 +78,7 @@ session_start();
                             </div>
                             <div class="col-md-7">
                                 <div class="text-center">
-                                    <h3 class="mt-4 font-weight-bold">Silahkan Register</h3>
+                                    <h3 class="mt-4 font-weight-bold">Silahkan Login</h3>
                                 </div>
                                 <div class="card-body p-md-5">
 

@@ -9,7 +9,7 @@
         echo"<script>document.location.href='login.php'; </script>";
     }
 
-    if($_SESSION['masyarakat']['status_verify'] == 'belum'){
+    if($_SESSION['masyarakat']['status_verify'] === 'belum'){
         echo"<script>alert('Kamu belum verifikasi akun'); </script>";
         echo"<script>document.location.href='verifikasi_akun.php'; </script>";
     }

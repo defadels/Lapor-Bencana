@@ -28,7 +28,7 @@ function sendmail_verify($email, $verify_otp){
 
     //Recipients
     $mail->setFrom('from@example.com', 'Admin Pengaduan Masyarakat');
-    $mail->addAddress('fadhil.adhaa26@gmail.com', 'User');     //Add a recipient
+    $mail->addAddress($email, 'User');     //Add a recipient
     $mail->addReplyTo('no-reply@example.com', 'Information');
 
     //Attachments
@@ -238,8 +238,8 @@ function sendmail_verify($email, $verify_otp){
         
         else {
 
-          $query = mysqli_query($koneksi, "INSERT INTO masyarakat(nik, nama, username, password, telp, kode_otp, status_verify)
-                                     VALUES('$nik', '$nama', '$username', '$password', '$telp', '$kode_otp', '$status_verify')") or die(mysqli_error($koneksi));
+          $query = mysqli_query($koneksi, "INSERT INTO masyarakat(nik, email, nama, username, password, telp, kode_otp, status_verify)
+                                     VALUES('$nik', '$email','$nama', '$username', '$password', '$telp', '$kode_otp', '$status_verify')") or die(mysqli_error($koneksi));
          if($query) {
 
             sendmail_verify($email, $verify_otp);

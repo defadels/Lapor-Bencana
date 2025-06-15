@@ -1,5 +1,6 @@
 <?php
 
+
 include 'koneksi.php';
 
 session_start();
@@ -10,7 +11,7 @@ session_start();
         echo"<script>alert('Tidak bisa akses halaman ini'); </script>";
         echo"<script>document.location.href='login.php'; </script>";
 
-    }
+    }    
 
 
 ?>
@@ -44,6 +45,21 @@ session_start();
         <div class="container align-item-center justify-content-center mt-5">
             <div class="row">
                  <div class="col-8 col-lg-8 mx-auto">
+                    <?php
+                        if(isset($_GET['status'])){
+
+                        
+                    ?>
+
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading"><?php echo $_GET['status'] ?></h4>
+                        <p>Silahkan cek kembali email kamu.</p>
+  
+                    </div>
+
+                    <?php } ?>?
+
+
                     <div class="card radius-15">
                         <div class="card-header text-center">
                             <h3 class="mt-4 font-weight-bold">Verifikasi Akun</h3>
@@ -73,7 +89,7 @@ session_start();
                             </form>
                         </div>
                         <div class="card-footer">
-                            <p>Belum dapat kode OTP? <a href="register.php">Kirim ulang</a></p>
+                            <p>Belum dapat kode OTP? <a href="resend.php?email=<?= $_SESSION['masyarakat']['email'] ?>">Kirim ulang</a></p>
                         </div>
                     </div>
                 </div>
@@ -96,15 +112,15 @@ session_start();
 
         $data = $query->fetch_assoc();
 
-        $nik = $_SESSION['nik'];
+        $email = $_SESSION['masyarakat']['email'];
 
         if ($kode_otp == $data['kode_otp']) {
 
-            $query_update = mysqli_query($koneksi, "UPDATE masyarakat SET status_verify = 'sudah' WHERE nik = '$nik'")or die(mysqli_error($koneksi));
+            $query_update = mysqli_query($koneksi, "UPDATE masyarakat SET status_verify = 'sudah' WHERE email = '$email'")or die(mysqli_error($koneksi));
 
 
             echo "<script>alert('Verifikasi Berhasl');</script>";
-            echo "<script>location.href='index.php';</script>";
+            echo "<script>location.href='login.php';</script>";
 
         } else{
             echo "<script>alert('Kode OTP Tidak Berhasil');</script>";
