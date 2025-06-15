@@ -141,6 +141,9 @@ include 'koneksi.php';
 <?php
 
     if(isset($_POST['submit'])){
+
+        $kode_otp = rand(6);
+        $status_verify = 'belum';
         $nik = $_POST['nik'];
         $nama = $_POST['nama'];
         $telp = $_POST['telp'];
@@ -152,8 +155,8 @@ include 'koneksi.php';
              // Menghentikan eksekusi setelah redirect
         } else {
 
-          $query = mysqli_query($koneksi, "INSERT INTO masyarakat(nik, nama, username, password, telp)
-                                     VALUES('$nik', '$nama', '$username', '$password', '$telp')") or die(mysqli_error($koneksi));
+          $query = mysqli_query($koneksi, "INSERT INTO masyarakat(nik, nama, username, password, telp, kode_otp, status_verify)
+                                     VALUES('$nik', '$nama', '$username', '$password', '$telp', '$kode_otp', '$status_verify')") or die(mysqli_error($koneksi));
          if($query) {
             echo "<script>alert('Berhasil melakukan register, silahkan login'); </script>";
             echo "<script>document.location.href='login.php';</script>";

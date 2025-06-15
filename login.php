@@ -159,6 +159,12 @@ session_start();
             if($cek == 1) {
                 $_SESSION['masyarakat'] = $query->fetch_assoc();
     
+
+                if($_SESSION['masyarakat']['status_verify'] === 'belum'){
+                    echo "<script>alert('Berhasil login, verifikasi akunmu!'); </script>";
+                    echo "<script> document.location.href='verifikasi_akun.php';</script>";
+                }
+
                 echo "<script>alert('Berhasil login'); </script>";
                 echo "<script> document.location.href='index.php';</script>";
             } else {
