@@ -5,12 +5,12 @@ include 'koneksi.php';
 session_start();
 
 
-    // if(!isset($_SESSION['masyarakat'])){
+    if(!isset($_SESSION['masyarakat'])){
 
-    //     echo"<script>alert('Tidak bisa akses halaman ini'); </script>";
-    //     echo"<script>document.location.href='login.php'; </script>";
+        echo"<script>alert('Tidak bisa akses halaman ini'); </script>";
+        echo"<script>document.location.href='login.php'; </script>";
 
-    // }
+    }
 
 
 ?>
@@ -57,13 +57,13 @@ session_start();
                                  <input 
                                      type="text"
                                      maxlength="6" 
-                                     class="form-control-lg <?php if (isset($_GET['errorusername'])) { echo 'is-invalid'; } ?>" 
+                                     class="form-control-lg <?php if (isset($_GET['error'])) { echo 'is-invalid'; } ?>" 
                                      name="kode_otp" 
                                      id="kode_otp" 
                                      placeholder="Contoh : 345xxx" >
 
-                                 <?php if (isset($_GET['errorusername'])) { ?>
-                                     <span class="invalid-feedback"><?php echo htmlspecialchars($_GET['errorusername']); ?></span>
+                                 <?php if (isset($_GET['error'])) { ?>
+                                     <span class="invalid-feedback"><?php echo htmlspecialchars($_GET['error']); ?></span>
                                 <?php 
                                  } 
                              ?>
@@ -89,19 +89,26 @@ session_start();
 <?php
     
     if (isset($_POST['verifikasi'])) {
-        $username = $_POST['username'];
+        $kode_otp = $_POST['kode_otp'];
 
         // Perbaikan query SQL
-        $query = mysqli_query($koneksi, "SELECT * FROM masyarakat WHERE username = '$username'") or die(mysqli_error($koneksi));
+        $query = mysqli_query($koneksi, "SELECT * FROM masyarakat WHERE kode_otp = '$kode_otp'") or die(mysqli_error($koneksi));
 
         $data = $query->fetch_assoc();
 
-        if ($query->num_rows) {
-            echo "<script>location.href='ubahpassword.php?username=$username';</script>";
+        $nik = $_SESSION['nik'];
 
-        } else if(empty($_POST['username']) || $_POST['username'] != $data['username']) {
-            
-            echo header('location: lupapassword.php?errorusername=Username Harus Sesuai');
+        if ($kode_otp == $data['kode_otp']) {
+
+            $query_update = mysqli_query($koneksi, "UPDATE masyarakat SET status_verify = 'sudah' WHERE nik = '$nik'")or die(mysqli_error($koneksi));
+
+
+            echo "<script>alert('Verifikasi Berhasl');</script>";
+            echo "<script>location.href='index.php';</script>";
+
+        } else{
+            echo "<script>alert('Kode OTP Tidak Berhasil');</script>";
+            echo header('location: verifikasi_akun.php?error=Kode OTP tidak sesuai');
         }
     }
 
