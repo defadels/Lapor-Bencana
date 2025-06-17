@@ -85,6 +85,11 @@
 											<img src="../foto/<?php echo $data_pengaduan['foto'];  ?>" style="width: 80%" alt="" class="img-fluid">
 										</div>
 										<div class="form-group">
+											<label for="">Video</label>
+											<br>
+											<video src="../video/<?php echo $data_pengaduan['video'];  ?>" style="width: 80%" alt="" class="object-fit-contain" controls>
+										</div>
+										<div class="form-group">
 											<label for="">Kecamatan</label>
 											<textarea name="" id=""  class="form-control"><?php echo $data_pengaduan['kecamatan'];  ?></textarea>
 										</div>

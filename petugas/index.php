@@ -101,11 +101,9 @@ if(!isset($_SESSION['petugas'])) {
 						<div class="menu-title">Barang Distribusi</div>
 					</a>
 					<ul>
-						<li> <a href="?halaman=barangmasuk"><i class="bx bx-right-arrow-alt"></i>Barang masuk</a>
+						<li> <a href="?halaman=distribusi"><i class="bx bx-right-arrow-alt"></i>Distribusi</a>
 						</li>
-						<li> <a href="?halaman=stokgudang"><i class="bx bx-right-arrow-alt"></i>Stok Gudang</a>
-						</li>
-						<li> <a href="?halaman=barangkeluar"><i class="bx bx-right-arrow-alt"></i>Barang Keluar</a>
+						<li> <a href="?halaman=stokbarang"><i class="bx bx-right-arrow-alt"></i>Stok Barang</a>
 						</li>
 					</ul>
 				</li>
@@ -178,14 +176,28 @@ if(!isset($_SESSION['petugas'])) {
 							include 'pengaduan/pengaduanbatal.php';
 						} else if($_GET['halaman'] == 'masyarakat') {
 							include 'masyarakat.php';
-						} else if($_GET['halaman'] == 'barangmasuk') {
-							include 'barangdistribusi/barangmasuk.php';
-						} else if($_GET['halaman'] == 'stokgudang') {
-							include 'barangdistribusi/stokgudang.php';
-						} else if($_GET['halaman'] == 'barangkeluar') {
-							include 'barangdistribusi/barangkeluar.php';
-						}
 
+						} else if($_GET['halaman'] == 'distribusi') {
+							include 'barangdistribusi/distribusi.php';
+						} else if($_GET['halaman'] == 'tambahdistribusi') {
+							include 'barangdistribusi/tambah_distribusi.php';
+						} else if($_GET['halaman'] == 'stokbarang') {
+							include 'barangdistribusi/stok_barang.php';
+						} else if($_GET['halaman'] == 'tambahstok') {
+							include 'barangdistribusi/tambah_stok.php';
+						} else if($_GET['halaman'] == 'historistokmasuk') {
+							include 'barangdistribusi/histori_stok_masuk.php';
+						} else if($_GET['halaman'] == 'editstokmasuk') {
+							include 'barangdistribusi/edit_stok_masuk.php';
+						} else if($_GET['halaman'] == 'hapusstokmasuk') {
+							include 'barangdistribusi/hapus_stok_masuk.php';
+						} else if($_GET['halaman'] == 'tambahbarang') {
+							include 'barangdistribusi/tambah_barang.php';
+						} else if($_GET['halaman'] == 'editdistribusi') {
+							include 'barangdistribusi/edit_distribusi.php';
+						} else if($_GET['halaman'] == 'hapusdistribusi') {
+							include 'barangdistribusi/hapus_distribusi.php';
+						}
 					} else {
 						include 'dashboard.php';
 					}

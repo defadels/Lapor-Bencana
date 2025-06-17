@@ -244,8 +244,13 @@ function sendmail_verify($email, $verify_otp){
 
             sendmail_verify($email, $verify_otp);
 
+
+            $query_user = mysqli_query($koneksi, "SELECT * FROM masyarakat WHERE email = '$email'") or die(mysqli_error($koneksi));
+
+            $_SESSION['masyarakat'] = $query_user->fetch_assoc();
+
             echo "<script>alert('Berhasil melakukan register, silahkan login'); </script>";
-            echo "<script>document.location.href='login.php';</script>";
+            echo "<script>document.location.href='verifikasi_akun.php';</script>";
         }else {
             echo "<script>alert('Gagal melakukan register, coba lagi'); </script>";
             echo "<script>document.location.href='register.php'; </script>";
