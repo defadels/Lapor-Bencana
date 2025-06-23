@@ -6,12 +6,12 @@ include 'koneksi.php';
 session_start();
 
 
-    if(!isset($_SESSION['masyarakat'])){
+    // if(!isset($_SESSION['masyarakat'])){
 
-        echo"<script>alert('Tidak bisa akses halaman ini'); </script>";
-        echo"<script>document.location.href='login.php'; </script>";
+    //     echo"<script>alert('Tidak bisa akses halaman ini'); </script>";
+    //     echo"<script>document.location.href='login.php'; </script>";
 
-    }    
+    // }    
 
 
 ?>
