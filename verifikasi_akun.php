@@ -57,7 +57,7 @@ session_start();
   
                     </div>
 
-                    <?php } ?>?
+                    <?php } ?>
 
 
                     <div class="card radius-15">
@@ -65,6 +65,8 @@ session_start();
                             <h3 class="mt-4 font-weight-bold">Verifikasi Akun</h3>
                         </div>
                         <div class="card-body p-md-5">
+
+
                             <form method="POST">
 
                             <div class="form-group">

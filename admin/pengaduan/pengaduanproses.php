@@ -140,8 +140,8 @@
 									<form action="" method="post">
 									<input type="hidden" name="id" value="<?php echo $data_pengaduan['id_pengaduan'];  ?>">
 										<div class="form-group">
-											<label for="">NIK</label>
-											<input type="text" readonly  class="form-control"  value="<?php echo $data_pengaduan['nik'];  ?>">
+											<label for="">Email</label>
+											<input type="email" readonly  class="form-control"  value="<?php echo $data_pengaduan['email'];  ?>">
 										</div>
 										<div class="form-group">
 											<label for="">Nama</label>

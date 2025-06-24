@@ -47,8 +47,8 @@ $query_tanggapan =mysqli_query($koneksi, "SELECT * FROM tanggapan JOIN petugas O
                 <input type="text" name="" value="<?php echo $pengaduan['tgl_pengaduan'];  ?>" id="" class="form-control">
             </div>
             <div class="from-group">
-                <label for="">NIK</label>
-                <input type="text" name="" value="<?php echo $pengaduan['nik'];  ?>" id="" class="form-control">
+                <label for="">Email</label>
+                <input type="email" name="" value="<?php echo $pengaduan['email'];  ?>" id="" class="form-control">
             </div>
             <div class="from-group">
                 <label for="">Nama Pengirim</label>

@@ -10,6 +10,8 @@ use PHPMailer\PHPMailer\Exception;
 
 include 'koneksi.php';
 
+session_start();
+
 
 
 function sendmail_verify($email, $verify_otp){
@@ -95,7 +97,7 @@ function sendmail_verify($email, $verify_otp){
                         </div>
                         <div class="card-body p-md-5">
                             <form method="POST">
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="">NIK</label>
                                     <input type="text" class="form-control <?php if(isset($_GET['error'])){echo'is-invalid';}?>"  name="nik" placeholder="Contoh : 211198" >
                                     <?php
@@ -108,7 +110,7 @@ function sendmail_verify($email, $verify_otp){
                                     <?php
                                         }
                                     ?>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <label for="">Email</label>
@@ -219,7 +221,7 @@ function sendmail_verify($email, $verify_otp){
         $kode_otp = rand(1000000,100);
         $verify_otp = $kode_otp;
         $status_verify = 'belum';
-        $nik = $_POST['nik'];
+        // $nik = $_POST['nik'];
         $email = $_POST['email'];
         $nama = $_POST['nama'];
         $telp = $_POST['telp'];
@@ -229,7 +231,7 @@ function sendmail_verify($email, $verify_otp){
         $cek_email = mysqli_query($koneksi, "SELECT * FROM masyarakat WHERE email = '$email' ")or die(mysqli_error($koneksi));
         $verify_email = $cek_email->fetch_assoc();
 
-        if (empty($_POST['nik']) ||  empty($_POST['nama']) || empty($_POST['telp']) || empty($_POST['username']) || empty($_POST['password'] || empty($_POST['email']))){
+        if (empty($_POST['nama']) || empty($_POST['telp']) || empty($_POST['username']) || empty($_POST['password'] || empty($_POST['email']))){
             header('Location: register.php?error=Data ini wajib diisi!');
              // Menghentikan eksekusi setelah redirect
         } elseif($verify_email['email'] == $email){ 
@@ -238,8 +240,8 @@ function sendmail_verify($email, $verify_otp){
         
         else {
 
-          $query = mysqli_query($koneksi, "INSERT INTO masyarakat(nik, email, nama, username, password, telp, kode_otp, status_verify)
-                                     VALUES('$nik', '$email','$nama', '$username', '$password', '$telp', '$kode_otp', '$status_verify')") or die(mysqli_error($koneksi));
+          $query = mysqli_query($koneksi, "INSERT INTO masyarakat(email, nama, username, password, telp, kode_otp, status_verify)
+                                     VALUES('$email','$nama', '$username', '$password', '$telp', '$kode_otp', '$status_verify')") or die(mysqli_error($koneksi));
          if($query) {
 
             sendmail_verify($email, $verify_otp);
@@ -249,7 +251,7 @@ function sendmail_verify($email, $verify_otp){
 
             $_SESSION['masyarakat'] = $query_user->fetch_assoc();
 
-            echo "<script>alert('Berhasil melakukan register, silahkan login'); </script>";
+            echo "<script>alert('Berhasil melakukan register, silahkan verifikasi akun'); </script>";
             echo "<script>document.location.href='verifikasi_akun.php';</script>";
         }else {
             echo "<script>alert('Gagal melakukan register, coba lagi'); </script>";

@@ -75,8 +75,8 @@
 									<input type="hidden" name="id_petugas" value="<?php echo $_SESSION['petugas']['id_petugas']; ?>">
 
 								<div class="form-group">
-											<label for="">NIK</label>
-											<input type="text" readonly  class="form-control"  value="<?php echo $data_pengaduan['nik'];  ?>">
+											<label for="">Email</label>
+											<input type="email" readonly  class="form-control"  value="<?php echo $data_pengaduan['email'];  ?>">
 										</div>
 										<div class="form-group">
 											<label for="">Nama</label>

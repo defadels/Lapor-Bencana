@@ -60,7 +60,7 @@ require_once 'config/kecamatan.php';
 
         <?php
         if(isset($_POST['submit'])) {
-            $nik = $_SESSION['masyarakat']['nik'];
+            $email = $_SESSION['masyarakat']['email'];
             $tanggal = $_POST['tgl_pengaduan'];
             $kecamatan = $_POST['kecamatan'];
             $alamat = $_POST['alamat'];
@@ -108,8 +108,8 @@ require_once 'config/kecamatan.php';
                 $video_baru = null;
             }
 
-            $query = mysqli_query($koneksi, "INSERT INTO pengaduan (tgl_pengaduan, nik, kecamatan, alamat, jenis_bencana, penyebab, dampak_kerugian, kebutuhan, foto, video, status)
-                        VALUES('$tanggal','$nik','$kecamatan','$alamat','$jenis_bencana','$penyebab','$dampak_kerugian','$kebutuhan','$foto_baru','$video_baru','$status')") or die(mysqli_error($koneksi));
+            $query = mysqli_query($koneksi, "INSERT INTO pengaduan (tgl_pengaduan, email, kecamatan, alamat, jenis_bencana, penyebab, dampak_kerugian, kebutuhan, foto, video, status)
+                        VALUES('$tanggal','$email','$kecamatan','$alamat','$jenis_bencana','$penyebab','$dampak_kerugian','$kebutuhan','$foto_baru','$video_baru','$status')") or die(mysqli_error($koneksi));
 
             if($query) {
                 echo "<script>alert('Berhasil Tambah Laporan'); </script>";
